@@ -60,7 +60,7 @@ Refer the below code to find location data manager's script file.
 
 After copying the files, then you can refer the pager's scripts into the `index.html` file.
 
-```
+```html
 <!DOCTYPE html>
   <html xmlns="http://www.w3.org/1999/xhtml">
        <head>
@@ -90,7 +90,7 @@ Refer the data manager's CDN links as below
 
 > Script: [`http://cdn.syncfusion.com/ej2/ej2-data/dist/global/ej2-data.min.js`](http://cdn.syncfusion.com/ej2/ej2-data/dist/global/ej2-data.min.js)
 
-```
+```html
 <!DOCTYPE html>
   <html xmlns="http://www.w3.org/1999/xhtml">
        <head>
