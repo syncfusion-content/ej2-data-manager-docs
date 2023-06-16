@@ -82,10 +82,10 @@ When querying data, the **DataManager** will convert the query object(**Query**)
 
 ## See Also
 
-* [Binding with OData service](./adaptors/#odata-adaptor)
-* [Binding with ODataV4 service](./adaptors/#odatav4-adaptor)
-* [Binding with Web API](./adaptors/#web-api-adaptor)
-* [How to write custom adaptor](./adaptors/#writing-custom-adaptor)
-* [How to work in offline mode](./how-to/#work-in-offline-mode)
-* [How to send additional parameters](./how-to/#sending-additional-parameters-to-server)
-* [How to add custom request headers](./how-to/#adding-custom-headers)
+* [Binding with OData service](./adaptors#odata-adaptor)
+* [Binding with ODataV4 service](./adaptors#odatav4-adaptor)
+* [Binding with Web API](./adaptors#web-api-adaptor)
+* [How to write custom adaptor](./adaptors#writing-custom-adaptor)
+* [How to work in offline mode](./how-to#work-in-offline-mode)
+* [How to send additional parameters](./how-to#sending-additional-parameters-to-server)
+* [How to add custom request headers](./how-to#adding-custom-headers)
