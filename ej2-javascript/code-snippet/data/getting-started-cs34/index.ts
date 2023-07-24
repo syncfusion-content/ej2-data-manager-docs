@@ -2,21 +2,18 @@
 
 import { DataManager, Query, JsonAdaptor, Predicate } from '@syncfusion/ej2-data';
 import { DropDownList, MultiSelect, CheckBoxSelection } from '@syncfusion/ej2-dropdowns';
-import { isNullOrUndefined } from '@syncfusion/ej2-base';
 import { Button } from '@syncfusion/ej2-buttons';
-import { Dialog } from '@syncfusion/ej2-popups';
-import { Grid, Page } from '@syncfusion/ej2-grids';
+import { Grid, Page, ColumnModel } from '@syncfusion/ej2-grids';
+import { data } from './datasource.ts';
 import {
     AccumulationChart,
-    AccumulationSeriesCollectionDirective,
-    AccumulationSeriesDirective,
     PieSeries,
     AccumulationDataLabel,
-    Inject,
   } from '@syncfusion/ej2-charts';
 
   Grid.Inject(Page);
   AccumulationChart.Inject(PieSeries, AccumulationDataLabel);
+  MultiSelect.Inject(CheckBoxSelection);
 
   let data: Object[] = [
     {
@@ -189,11 +186,14 @@ import {
     }
 ];
 
+let dataManager: DataManager = new DataManager({ json: data, adaptor: new JsonAdaptor, enablePersistence: true, id: 'id', ignoreOnPersist: ["onSortBy", "onSearch"] });
+
 let query: Query = new Query();
+let sortAndFilterQuery: Query = new Query();
 let grid: Grid;
 let pieChart: AccumulationChart;
 
-const homeColumns = [
+const homeColumns: ColumnModel[] = [
     { type: 'checkbox', allowFiltering: false, allowSorting: false, width: '60' },
     { field: 'ProductID', headerText: 'Product ID', width: '50', textAlign: 'Center', isPrimaryKey: true, template: '#template', },
     { field: 'ProductName', headerText: 'Product Name', width: '80' },
@@ -201,14 +201,9 @@ const homeColumns = [
     { field: 'Price', headerText: 'Price', format: 'C2', width: '150' },
 ];
 
-const wishColumns = homeColumns.filter(column => column.type !== 'checkbox');
+const wishColumns: ColumnModel[] = homeColumns.filter(column => column.type !== 'checkbox');
 
-function createDataManager(id: string): DataManager {
-    return new DataManager({ json: data, adaptor: new JsonAdaptor, enablePersistence: true, id: id, ignoreOnPersist: ["onSortBy", "onSearch"] })
-}
-
-let dataManager: DataManager = createDataManager('Dummy');
-
+//Function to render grid and chart by passing required datasource as argument.
 function renderGridAndChart(columns: object[], dataSource: DataManager | object[]) {
     if (grid && pieChart){
         grid.destroy();
@@ -281,9 +276,8 @@ clearButton.element.setAttribute("title", "Clear Wishlist");
 
 const categories = Array.from(new Set(data.map(item => (item as any).Category)))
 
-const filterDropdown = document.getElementById('filterDropdown')!;
-MultiSelect.Inject(CheckBoxSelection);
-// Initialize the multi-select dropdown
+const filterDropdown: HTMLElement = document.getElementById('filterDropdown')!;
+// Initialize the multi-select category dropdown
 const multiSelect = new MultiSelect({
     dataSource: categories,
     placeholder: 'Select category',
@@ -335,26 +329,30 @@ function handleChangeDropdown(e: any) {
 sortButton1.element.onclick = (): void => {
     if (sortButton1.element.classList.contains('clicked')) {
         sortButton1.element.classList.remove('clicked');
-        renderGridAndChart(homeColumns, dataManager.executeLocal(new Query()));
+        sortAndFilterQuery = new Query();
+        renderGridAndChart(homeColumns, dataManager.executeLocal(sortAndFilterQuery));
     }
     else {
         sortButton2.element.classList.remove('clicked');
         sortButton1.element.classList.add('clicked');
-        query.sortBy('Price', 'ascending');
-        renderGridAndChart(homeColumns, dataManager.executeLocal(query));
+        sortAndFilterQuery.queries = sortAndFilterQuery.queries.filter((q) => q.fn !== 'onSortBy');
+        sortAndFilterQuery.sortBy('Price', 'ascending');
+        renderGridAndChart(homeColumns, dataManager.executeLocal(sortAndFilterQuery));
     }
 }
 
 sortButton2.element.onclick = (): void => {
     if (sortButton2.element.classList.contains('clicked')) {
         sortButton2.element.classList.remove('clicked');
-        renderGridAndChart(homeColumns, dataManager.executeLocal(new Query()));
+        sortAndFilterQuery = new Query();
+        renderGridAndChart(homeColumns, dataManager.executeLocal(sortAndFilterQuery));
     }
     else {
         sortButton1.element.classList.remove('clicked');
         sortButton2.element.classList.add('clicked');
-        query.sortBy('Price', 'descending');
-        renderGridAndChart(homeColumns, dataManager.executeLocal(query));
+        sortAndFilterQuery.queries = sortAndFilterQuery.queries.filter((q) => q.fn !== 'onSortBy');
+        sortAndFilterQuery.sortBy('Price', 'descending');
+        renderGridAndChart(homeColumns, dataManager.executeLocal(sortAndFilterQuery));
     }
 }
 
@@ -382,6 +380,7 @@ AddtoWishlistButton.element.onclick = (): void => {
             filterPredicates.push(predicate);
         });
         // Create the filter query using the filter predicates
+        dataManager.dataSource.enablePersistence = true;
         const filterQuery = (filterPredicates.length > 0) ? query.where(Predicate.or(filterPredicates)) : query;
         console.log(filterQuery);
         alert(filteredProducts.length + ' items added to wishlist successfully.')
@@ -416,11 +415,11 @@ function handleMultiSelectChange() {
         const filterPredicates = selectedCategories.map(category => {
         return new Predicate('Category', 'equal', category);
         });
-        
-        const query = new Query().where(Predicate.or(filterPredicates));
-        dataManager.dataSource.id = 'homePage';
+        sortAndFilterQuery.queries = sortAndFilterQuery.queries.filter((q) => q.fn !== 'onWhere');
+        sortAndFilterQuery.where(Predicate.or(filterPredicates));
+        dataManager.dataSource.enablePersistence = false;
         // Apply the filter based on the selected categories
-        renderGridAndChart(homeColumns, dataManager.executeLocal(query));
+        renderGridAndChart(homeColumns, dataManager.executeLocal(sortAndFilterQuery));
     }
     else {
         renderGridAndChart(homeColumns, dataManager.executeLocal(new Query()));
