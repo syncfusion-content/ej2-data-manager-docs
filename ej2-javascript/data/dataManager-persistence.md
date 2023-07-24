@@ -11,8 +11,7 @@ domainurl: ##DomainURL##
 
 # State persistence in ##Platform_Name## Data control
 
-State persistence refers to the DataManager’s state maintained in the browser’s [localStorage](https://www.w3schools.com/html/html5_webstorage.asp#) even if the browser is refreshed or if you move to the next page within the browser.
-This feature requires the `id` and `enablePersistence` properties to be set in the **DataManager** to persist DataManager’s query object in the local storage.
+State persistence refers to the ability of the DataManager to maintain its state in the browser's localStorage, even when the browser is refreshed or when navigating to a different page within the same browser. To enable this feature, you need to set the `id` and `enablePersistence` properties in the DataManager. This allows the DataManager's query object to persistently store in the local storage.
 
 ```ts
 import { DataManager, Query, UrlAdaptor } from "@syncfusion/ej2-data";
@@ -25,7 +24,7 @@ new DataManager({
   adaptor: new UrlAdaptor(),
   //Mandatory properties to use state persistence.
   enablePersistence: true,
-  id: "DataManagerid",
+  id: "johnDoe",
 })
   .executeQuery(new Query().take(8))
   .then((e) => {
@@ -35,9 +34,16 @@ new DataManager({
 
 ## Preventing a query from persistence
 
-The executed queries in **DataManager** like Sorting, Searching, Filtering, and Selection will persist across browser sessions. However, in some cases, you might want to exclude specific queries from being saved. To achieve this, you can use the `ignoreOnPersist` property.
+By default, the DataManager can persist various types of queries, such as sorting, searching, filtering, and selection queries However, there may be cases where you want to exclude specific queries from persistence. To achieve this, you can utilize the `ignoreOnPersist` property and specify the queries you wish to exclude. Refer to the table below for the naming conventions of DataManager queries:
 
-By providing an array of string values, such as **onSortBy** or **onSearch**, you can prevent certain queries from persisting in the DataManager's state. This allows you to customize the persistence behavior according to your application's requirements.
+Sorting: onSortBy
+Searching: onSearch
+Selection: onSelect
+Filtering: onWhere
+Grouping: onGroup
+
+The `ignoreOnPersist` property type is an array, allowing you to exclude multiple queries from persistence according to your requirements.
+Refer to the following example, which demonstrates how to exclude the sorting query ("onSortBy") and the search query ("onSearch") from being persisted in the DataManager:
 
 ```ts
 import { DataManager, Query, UrlAdaptor } from "@syncfusion/ej2-data";
@@ -59,9 +65,11 @@ new DataManager({
   });
 ```
 
-## Retrieving or Updating Local Storage Value
+## How to get or set the existing persisted data
 
-The DataManager’s persisted query object is saved in the `window.localStorage` for reference. You can access or modify the localStorage value using the `getPersistedData` and `setPersistData` methods in the **DataManager**. These methods require the **id** argument to retrieve or update the query object in local storage.
+To access or modify the existing persisted data in the DataManager, you can utilize the `getPersistedData` and `setPersistData` methods available in the DataManager.
+
+The `getPersistedData` method allows you to retrieve the existing persisted data. It takes a single argument, which is the DataManager's `id`. By passing the DataManager's id, you can retrieve the persisted data associated with the DataManager from the window.localStorage. Here is an example of how to use the getPersistedData method:
 
 ```ts
 import { DataManager, Query, UrlAdaptor } from "@syncfusion/ej2-data";
@@ -73,30 +81,44 @@ let dataManager = new DataManager({
   url: SERVICE_URI,
   adaptor: new UrlAdaptor(),
   enablePersistence: true,
-  id: "DataManagerid",
+  id: "Johndoe",
+});
+
+let persistedQuery = dataManager.getPersistedData("Johndoe");
+```
+On the other hand, the `setPersistData` method enables you to add a query to the existing persisted data. It accepts three arguments:
+
+Original event: Set this argument to null.
+Id: Pass the DataManager's id value.
+Query: Provide the query that you want to add to the persisted data.
+
+Here is an example demonstrating how to add a query to the existing persisted data:
+
+```ts
+import { DataManager, Query, UrlAdaptor } from "@syncfusion/ej2-data";
+
+let SERVICE_URI =
+  "https://services.syncfusion.com/js/production/api/UrlDataSource";
+
+let dataManager = new DataManager({
+  url: SERVICE_URI,
+  adaptor: new UrlAdaptor(),
+  enablePersistence: true,
+  id: "Johndoe",
 });
 
 let query = new Query().sortBy("Designation", "descending").take(8);
 
-//Arguments for `setPersistData`:
-// * e: Event - The event parameter that triggers the `setPersistData` method (provide it with null value).
-// * id: string - The identifier of the persisted query to set.
-// * query: object - The query to be persisted.
+dataManager.setPersistData(null, "Johndoe", query);
 
-dataManager.setPersistData(null, "DataManagerid", query);
-
-//Arguments for `getPersistedData`:
-// * id: string - The identifier of the persisted query to set.
-//return the persisted query for that identifier.
-
-let persistedQuery = dataManager.getPersistedData("Johndoe");
 ```
+By using the setPersistData method, you can append the specified query to the DataManager's existing persisted data.
 
-## Restore initial DataManager state
+## Restoring the initial state of Datamanager
 
-When the `enablePersistence` property is set to **true**, the **DataManager** will keep its state even if the page is reloaded. In some cases, you may be required to retain the **DataManager** in its initial state.
+If you have enabled the `enablePersistence` feature in the DataManager, it automatically retains the previous state when the browser is refreshed or reloaded. However, there might be situations where you want to clear the persistence and load the initial state of the DataManager. In such cases, you can utilize the `clearPersistence()` method provided by the DataManager.
 
-You can achieve this by `clearPersistence` and clearing the local storage data, as shown in the code below.
+Here is a code example demonstrating how to clear the persistence in the DataManager:
 
 ```ts
 import { DataManager, Query, UrlAdaptor } from "@syncfusion/ej2-data";
@@ -108,35 +130,42 @@ let dataManager = new DataManager({
   url: SERVICE_URI,
   adaptor: new UrlAdaptor(),
   enablePersistence: true,
-  id: "DataManagerid",
+  id: "Johndoe",
 });
 
 let query = new Query().sortBy("Designation", "descending").take(8);
 
 //sets persist query to browser storage.
-dataManager.setPersistData(null, "DataManagerid", query);
+dataManager.setPersistData(null, "Johndoe", query);
 
 //clears the persisted query.
 dataManager.clearPersistence();
 ```
+By invoking the clearPersistence() method, you can remove the persisted data and restore the DataManager to its initial state.
 
-## Demo sample using DataManager state persistence
+## Use case example demonstrating sate persistence with the DataManager
 
-In this demo, we present a multi-user shopping site that showcases the DataManager's state persistence feature along with grid and chart components using DataManager as their datasource.
+This demonstration involves two components, namely the **Grid** component and the **Chart** component, which both fetch data from the same instance of the DataManager, which has the state persistence feature enabled.
 
-Demo Sample Usage Instructions:
+The Grid component is responsible for displaying the entire dataset, while the Chart component presents user reviews based on specific data from the "column name" field. Both components are associated with the same DataManager instance and it has enabled the state persistence feature. The query state of the DataManager is automatically saved in the browser's local storage as the user applies filtering and sorting actions. In both components are reloaded the data with the last persisted state while refreshing or reloading the browser.
 
-1. You can select a user from the dropdown menu. The username has been automatically set as `id` property in the DataManager, allowing queries to be persisted separately for each user.
+In this demo, the filter query and sort query are persisted, whereas the search query is not persisted. The onSearch query is excluded from persistence by setting it in the ignoreOnPersist property of the DataManager.
 
-2. To add items to the wishlist for a specific user, simply select the desired items using the checkboxes and then click the **Add to Wishlist** button.
+For a more detailed explanation and steps of this use case, refer to the following:
 
-3. To view the added items, click the **Show Wishlist** button. The filter query will be automatically generated based on the selected items during the addition process, and it will be executed in the datamanager when the **Show Wishlist** button is clicked.
+Step 1: To initiate the demo, users are required to select a username from the dropdown list. After making a selection, the Grid and Chart components will load with initial data using the Datamanager. Specifically for this demo, the Datamanager's id will be set to the chosen username. The Datamanager will then store the query with this id in the window.localstorage. Refer to the code example for your reference:
 
-4. You can filter products by category using the filter bar. When you select a category, a filter query will be generated based on your selection. This query will be executed automatically when you close the filter menu. Similarly, you can sort the products by clicking the **Price-Low to High** or **Price-High to Low** buttons. The corresponding sort query will be executed in the **DataManager**, updating the grid and chart components accordingly. To prevent the sort query from persisting for each user, it is marked with the `ignoreOnPersist` property.
+Step 2: This demo allows you to select Grid items by clicking checkboxes and adding them to your cart using the "Add" button in the toolbar. Additionally, you can sort the products from high price to low price by clicking the "Price Low-High" and "Price High-Low" buttons. Furthermore, you can view the added products from the wishlist by clicking the wishlist icon. All this information is persisted and stored by the DataManager based on the user ID.
 
-5. To switch to a different user, click the **Logout** button. This action will take you to the home page where you can select a new user from the dropdown menu. Your currently executed queries will be persisted, ensuring that the wishlist items for each user are retained.
+You also can filter the product items using the product category filter. However, this category filter is not persisted in the DataManager due to setting onFilter in the ignorePersistence of the Datamanager. Refer to the code example for implementation details.
 
-6. To clear the wishlist for a specific user, click the **Clear Wishlist** button. This will remove all the saved wishlist items for that user.
+The Chart component allows you to see the product reviews.
+
+Step 3: To log out, simply use the "Logout" button.
+
+Step 4: After logging out or refreshing the browser, you will need to select a username from the dropdown list once again (repeat step 1). However, the Grid data will now be loaded based on the last persisted wishlist, associated with the chosen username. The complete example is as follows:
+
+To clear the wishlist for a specific user, click the "Clear Wishlist" button. This will remove all the saved wishlist items for that user.
 
 {% if page.publishingplatform == "typescript" %}
 
