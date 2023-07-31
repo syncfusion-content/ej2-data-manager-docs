@@ -130,7 +130,7 @@ let dataManager = new DataManager({
   url: SERVICE_URI,
   adaptor: new UrlAdaptor(),
   enablePersistence: true,
-  id: "Johndoe",
+  id: "dataManagerid",
 });
 
 let query = new Query().sortBy("Designation", "descending").take(8);
@@ -157,7 +157,7 @@ Step 1: To initiate the demo, users are required to select a username from the d
 
 Step 2: This demo allows you to select Grid items by clicking checkboxes and adding them to your cart using the "Add" button in the toolbar. Additionally, you can sort the products from high price to low price by clicking the "Price Low-High" and "Price High-Low" buttons. Furthermore, you can view the added products from the wishlist by clicking the wishlist icon. All this information is persisted and stored by the DataManager based on the user ID.
 
-You also can filter the product items using the product category filter. However, this category filter is not persisted in the DataManager due to setting onFilter in the ignorePersistence of the Datamanager. Refer to the code example for implementation details.
+You also can filter the product items using the product category filter. However, this category filter is also not persisted.
 
 The Chart component allows you to see the product reviews.
 
@@ -167,29 +167,4 @@ Step 4: After logging out or refreshing the browser, you will need to select a u
 
 To clear the wishlist for a specific user, click the "Clear Wishlist" button. This will remove all the saved wishlist items for that user.
 
-{% if page.publishingplatform == "typescript" %}
-
-{% tabs %}
-{% highlight ts tabtitle="index.ts" %}
-{% include code-snippet/data/getting-started-cs34/index.ts %}
-{% endhighlight %}
-{% highlight html tabtitle="index.html" %}
-{% include code-snippet/data/getting-started-cs34/index.html %}
-{% endhighlight %}
-{% endtabs %}
-
-{% previewsample "http://127.0.0.1:4000/ej2-ts/code-snippet/data/getting-started-cs34" %}
-
-{% elsif page.publishingplatform == "javascript" %}
-
-{% tabs %}
-{% highlight js tabtitle="index.js" %}
-{% include code-snippet/data/getting-started-cs34/index.js %}
-{% endhighlight %}
-{% highlight html tabtitle="index.html" %}
-{% include code-snippet/data/getting-started-cs34/index.html %}
-{% endhighlight %}
-{% endtabs %}
-
-{% previewsample "http://127.0.0.1:4000/ej2-ts/code-snippet/data/getting-started-cs34" %}
-{% endif %}
+[Here](https://github.com/SyncfusionExamples/EJ2-DataManager-peristence-cart-sample), you can find the Use case example demonstrating sate persistence with the DataManager.
