@@ -143,23 +143,23 @@ dataManager.clearPersistence();
 ```
 By invoking the clearPersistence() method, you can remove the persisted data and restore the DataManager to its initial state.
 
-## Use case example demonstrating sate persistence with the DataManager
+## Use case example demonstrating state persistence with the DataManager
 
-This demonstration involves two components, namely the **Grid** component and the **Chart** component, which both fetch data from the same instance of the DataManager, which has the state persistence feature enabled.
+This demonstration involves two controls, namely the **Grid** control and the **Chart** control, which both fetch data from the same instance of the DataManager, which has the state persistence feature enabled.
 
-The Grid component is responsible for displaying the entire dataset, while the Chart component presents user reviews based on specific data from the "column name" field. Both components are associated with the same DataManager instance and it has enabled the state persistence feature. The query state of the DataManager is automatically saved in the browser's local storage as the user applies filtering and sorting actions. In both components are reloaded the data with the last persisted state while refreshing or reloading the browser.
+The Grid control is responsible for displaying the entire dataset, while the Chart control presents user reviews based on specific data from the "column name" field. Both controls are associated with the same DataManager instance and it has enabled the state persistence feature. The query state of the DataManager is automatically saved in the browser's local storage as the user applies filtering and sorting actions. In both controls are reloaded the data with the last persisted state while refreshing or reloading the browser.
 
 In this demo, the filter query and sort query are persisted, whereas the search query is not persisted. The onSearch query is excluded from persistence by setting it in the ignoreOnPersist property of the DataManager.
 
 For a more detailed explanation and steps of this use case, refer to the following:
 
-Step 1: To initiate the demo, users are required to select a username from the dropdown list. After making a selection, the Grid and Chart components will load with initial data using the Datamanager. Specifically for this demo, the Datamanager's id will be set to the chosen username. The Datamanager will then store the query with this id in the window.localstorage. Refer to the code example for your reference:
+Step 1: To initiate the demo, users are required to select a username from the dropdown list. After making a selection, the Grid and Chart controls will load with initial data using the Datamanager. Specifically for this demo, the Datamanager's id will be set to the chosen username. The Datamanager will then store the query with this id in the window.localstorage. Refer to the code example for your reference:
 
 Step 2: This demo allows you to select Grid items by clicking checkboxes and adding them to your cart using the "Add" button in the toolbar. Additionally, you can sort the products from high price to low price by clicking the "Price Low-High" and "Price High-Low" buttons. Furthermore, you can view the added products from the wishlist by clicking the wishlist icon. All this information is persisted and stored by the DataManager based on the user ID.
 
 You also can filter the product items using the product category filter. However, this category filter is also not persisted.
 
-The Chart component allows you to see the product reviews.
+The Chart control allows you to see the product reviews.
 
 Step 3: To log out, simply use the "Logout" button.
 
