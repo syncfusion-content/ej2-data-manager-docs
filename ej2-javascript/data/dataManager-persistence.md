@@ -34,7 +34,7 @@ new DataManager({
 
 ## Preventing a query from persistence
 
-By default, the DataManager can persist various types of queries, such as sorting, searching, filtering, and selection queries However, there may be cases where you want to exclude specific queries from persistence. To achieve this, you can utilize the `ignoreOnPersist` property and specify the queries you wish to exclude. Refer to the table below for the naming conventions of DataManager queries:
+By default, the DataManager can persist various types of queries, such as sorting, searching, filtering, and selection queries. However, there may be cases where you want to exclude specific queries from persistence. To achieve this, you can utilize the `ignoreOnPersist` property and specify the queries you wish to exclude. Refer to the table below for the naming conventions of DataManager queries:
 
 Sorting: onSortBy
 Searching: onSearch
