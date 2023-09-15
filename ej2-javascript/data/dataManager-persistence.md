@@ -67,9 +67,9 @@ new DataManager({
 
 ## How to get or set the existing persisted data
 
-To access or modify the existing persisted data in the DataManager, you can utilize the `getPersistedData` and `setPersistData` methods available in the DataManager.
+To access or modify the existing persisted data in the DataManager, you can utilize the [`getPersistedData`](https://ej2.syncfusion.com/documentation/api/data/dataManager/#getpersisteddata) and [`setPersistData`](https://ej2.syncfusion.com/documentation/api/data/dataManager/#setpersistdata) methods available in the DataManager.
 
-The `getPersistedData` method allows you to retrieve the existing persisted data. It takes a single argument, which is the DataManager's `id`. By passing the DataManager's id, you can retrieve the persisted data associated with the DataManager from the window.localStorage. Here is an example of how to use the getPersistedData method:
+The [`getPersistedData`](https://ej2.syncfusion.com/documentation/api/data/dataManager/#getpersisteddata) method allows you to retrieve the existing persisted data. It takes a single argument, which is the DataManager's `id`. By passing the DataManager's id, you can retrieve the persisted data associated with the DataManager from the window.localStorage. Here is an example of how to use the getPersistedData method:
 
 ```ts
 import { DataManager, Query, UrlAdaptor } from "@syncfusion/ej2-data";
@@ -86,7 +86,7 @@ let dataManager = new DataManager({
 
 let persistedQuery = dataManager.getPersistedData("Johndoe");
 ```
-On the other hand, the `setPersistData` method enables you to add a query to the existing persisted data. It accepts three arguments:
+On the other hand, the [`setPersistData`](https://ej2.syncfusion.com/documentation/api/data/dataManager/#setpersistdata) method enables you to add a query to the existing persisted data. It accepts three arguments:
 
 Original event: Set this argument to null.
 Id: Pass the DataManager's id value.
