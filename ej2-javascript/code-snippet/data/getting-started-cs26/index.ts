@@ -1,6 +1,4 @@
-
-
-import { DataManager, Query, ReturnOption, ODataAdaptor } from '@syncfusion/ej2-data';
+import { DataManager, Query, ReturnOption, ODataV4Adaptor } from '@syncfusion/ej2-data';
 import { compile } from '@syncfusion/ej2-base';
 
 let template: string = '<tr><td>${OrderID}</td><td>${CustomerID}</td><td>${EmployeeID}</td></tr>'
@@ -12,11 +10,11 @@ let group: string = '<tr><td colspan=3>' +
 let compiledFunction: Function = compile(template);
 let groupFn = compile(group);
 
-const SERVICE_URI =  'https://js.syncfusion.com/demos/ejServices/Wcf/Northwind.svc';
+const SERVICE_URI =  'https://services.odata.org/V4/Northwind/Northwind.svc/';
 
 let table: HTMLElement = (<HTMLElement>document.getElementById('datatable'));
 
-new DataManager({ url: SERVICE_URI, adaptor: new ODataAdaptor })
+new DataManager({ url: SERVICE_URI, adaptor: new ODataV4Adaptor })
     .executeQuery(new Query().from('Orders').take(3).hierarchy(
                     new Query()
                         .foreignKey("OrderID")
@@ -33,5 +31,8 @@ new DataManager({ url: SERVICE_URI, adaptor: new ODataAdaptor })
             table.appendChild(groupFn(data)[0]);
         });
     });
+
+
+
 
 
