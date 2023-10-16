@@ -178,7 +178,7 @@ The sample response object should look like below.
 
 The `WebMethodAdaptor` is used to bind data source from remote services and code behind methods. It can be enabled in Grid using Adaptor property of DataManager as `WebMethodAdaptor`.
 
-For every operations, an AJAX post will be send to the specified data service.
+For every operations, an Fetch post will be send to the specified data service.
 
 ```ts
 import { DataManager, Query, WebMethodAdaptor } from '@syncfusion/ej2-data';
@@ -213,33 +213,34 @@ The `CustomDataAdaptor` provides an option to send your own request to handle th
 You can get the current action details inside the `getData` method of `CustomDataAdaptor` to build the request. Once the data is fetched from the service successfully, then the `onSuccess` method can be invoked to handle the further data processing. In failure case, invoke the `onFailure` method.
 
 ```ts
-import { DataManager, Query, CustomDataAdaptor, AjaxOption } from '@syncfusion/ej2-data';
+import { DataManager, Query, CustomDataAdaptor, FetchOption } from '@syncfusion/ej2-data';
 
 const SERVICE_URI: string = 'http://controller.com/actions';
 
 new DataManager({
-        adaptor: new CustomDataAdaptor({
-                getData: function(option: AjaxOption) {
-                      let xhttp: XMLHttpRequest = new XMLHttpRequest();
-                      xhttp.onreadystatechange = function () {
-                        if (this.readyState == 4) {
-                             let request: Object = extend({}, option, { httpRequest: xhttp });
-                             if ((xhttp.status >= 200 && xhttp.status <= 299) || xhttp.status === 304) {
-                             let data: Object = JSON.parse(xhttp.responseText);
-                             option.onSuccess(data, request);
-                            } else {
-                             option.onFailure(request);
-                            }
-                        }
-                    };
-                    xhttp.open("POST", SERVICE_URI, true);
-                    xhttp.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
-                    xhttp.send(option.data);
+    adaptor: new CustomDataAdaptor({
+        getData: function (option: FetchOption) {
+            let request: object;
+            fetch(SERVICE_URI, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8',
+                },
+            }).then((response) => {
+                request = extend({}, option, { httpRequest: response });
+                if (response.status >= 200 && response.status <= 299) {
+                    return response.json();
                 }
-            })
-    }).executeQuery(new Query().take(8)).then((e) => {
-        //e.result will contain the records
-    });
+            }).then((data) => {
+                option.onSuccess(data, request);
+            }).catch((error) => {
+                option.onFailure(request);
+            });
+        },
+    }),
+}).executeQuery(new Query().take(8)).then((e) => {
+    //e.result will contain the records
+});
 ```
 
 Since the `CustomDataAdaptor` is extended from the `UrlAdaptor`, it expects response as a JSON object with properties `result` and `count` which
@@ -259,44 +260,45 @@ The sample response object should be as follows,
 You can perform the CRUD actions using the `addRecord`, `updateRecord`, `deleteRecord` and `batchUpdate` methods.
 
 ```ts
-import { DataManager, Query, CustomDataAdaptor, AjaxOption } from '@syncfusion/ej2-data';
+import { DataManager, Query, CustomDataAdaptor, FetchOption } from '@syncfusion/ej2-data';
 
-let createRequest: Function = (url: string, option: AjaxOption) => {
-    let xhttp: XMLHttpRequest = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4) {
-            let request: Object = extend({}, option, { httpRequest: xhttp });
-            if ((xhttp.status >= 200 && xhttp.status <= 299) || xhttp.status === 304) {
-                let data: Object = JSON.parse(xhttp.responseText);
+let createRequest: Function = (url: string, option: FetchOption) => {
+            let request: object;
+            fetch(SERVICE_URI, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8',
+                },
+            }).then((response) => {
+                request = extend({}, option, { httpRequest: response });
+                if (response.status >= 200 && response.status <= 299) {
+                    return response.json();
+                }
+            }).then((data) => {
                 option.onSuccess(data, request);
-            } else {
+            }).catch((error) => {
                 option.onFailure(request);
-            }
+            });
         }
-    };
-    xhttp.open("POST", url, true);
-    xhttp.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
-    xhttp.send(option.data);
-};
 
 let baseUrl: string = "http://localhost:65327/Home/";
 
 new DataManager({
         adaptor: new CustomDataAdaptor({
-                getData: function (option: AjaxOption) {
+                getData: function (option: FetchOption) {
                     createRequest(baseUrl + 'UrlDatasource', option);
                 },
-                addRecord: function (option: AjaxOption) {
+                addRecord: function (option: FetchOption) {
                     createRequest(baseUrl + 'Insert', option);
                 },
-                updateRecord: function (option: AjaxOption) {
+                updateRecord: function (option: FetchOption) {
                     createRequest(baseUrl + 'Update', option);
                 },
-                deleteRecord: function (option: AjaxOption) {
+                deleteRecord: function (option: FetchOption) {
                     createRequest(baseUrl + 'Delete', option);
                 }
                 // to handle Batch operation
-                //batchUpdate: function (option: AjaxOption) {
+                //batchUpdate: function (option: FetchOption) {
                 //  createRequest(baseUrl + 'Delete', option);  
                 //}
             })
