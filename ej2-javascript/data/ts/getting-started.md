@@ -59,22 +59,6 @@ npm install
 {% endhighlight %}
 {% endtabs %}
 
-## Import the Syncfusion CSS styles
-
-Syncfusion JavaScript controls come with [built-in themes](https://ej2.syncfusion.com/documentation/appearance/theme/), which are available in the installed packages. It's easy to adapt the Syncfusion JavaScript controls to match the style of your application by referring to one of the built-in themes.
-
-The quickstart application is preconfigured to use the `Material` theme in the `~/src/styles/styles.css` file, as shown below: 
-
-{% tabs %}
-{% highlight css tabtitle="style.css" %}
-
-@import "../../node_modules/@syncfusion/ej2/material.css";
-
-{% endhighlight %}
-{% endtabs %}
-
-> You can check out the [themes](https://ej2.syncfusion.com/documentation/appearance/theme/) section to know more about built-in themes and CSS reference for individual controls.
-
 ## Connection to a data source
 
 The DataManager can act as gateway for both local and remote data source which will uses the query to interact with the data source.
