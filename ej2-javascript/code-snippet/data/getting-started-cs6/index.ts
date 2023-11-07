@@ -7,7 +7,7 @@ let template: string = '<tr><td>${OrderID}</td><td>${CustomerID}</td><td>${Emplo
 
 let compiledFunction: Function = compile(template);
 
-const SERVICE_URI: string = 'https://js.syncfusion.com/demos/ejServices/Wcf/Northwind.svc/Orders';
+const SERVICE_URI: string = 'https://services.syncfusion.com/js/production/api/orders';
 
 let table: HTMLElement = (<HTMLElement>document.getElementById('datatable'));
 

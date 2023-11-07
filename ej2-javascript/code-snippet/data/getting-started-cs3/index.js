@@ -7,7 +7,7 @@ var group = '<tr><td colspan=3>' +
 var compiledFunction = ej.base.compile(template);
 var groupFn = ej.base.compile(group);
 
-const SERVICE_URI =  'https://services.odata.org/V4/Northwind/Northwind.svc/';
+const SERVICE_URI =  'https://services.odata.org/V4/Northwind/Northwind.svc/Orders/';
 
 var table = (document.getElementById('datatable'));
 
