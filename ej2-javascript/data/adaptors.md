@@ -57,7 +57,7 @@ The adaptor can be assigned using the `adaptor` property of the **DataManager**.
 ```ts
 import { DataManager, Query, UrlAdaptor } from '@syncfusion/ej2-data';
 
-const SERVICE_URI: string = 'http://controller.com/actions';
+const SERVICE_URI: string = 'https://services.syncfusion.com/js/production/api/UrlDataSource';
 
 new DataManager({
         url: SERVICE_URI,
@@ -153,7 +153,7 @@ To enable OData query option for Web API, please refer to the [documentation](ht
 ```ts
 import { DataManager, Query, WebApiAdaptor } from '@syncfusion/ej2-data';
 
-const SERVICE_URI: string = 'http://controller.com/api';
+const SERVICE_URI: string = 'https://services.syncfusion.com/js/production/api/Orders';
 
 new DataManager({
         url: SERVICE_URI,
