@@ -1,6 +1,6 @@
 (document.getElementById('datatable')).style.display = 'none';
 
-const SERVICE_URI = 'https://js.syncfusion.com/demos/ejServices/Wcf/Northwind.svc/Orders/?$top=20';
+const SERVICE_URI = 'https://services.syncfusion.com/js/production/api/orders';
 
 var grid = new ej.grids.Grid({
     dataSource: new ej.data.DataManager({ url: SERVICE_URI }),

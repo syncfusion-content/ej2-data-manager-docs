@@ -112,8 +112,9 @@ The DataManager can act as gateway for both local and remote data source which w
 
 ### Binding to JSON data
 
-`DataManager` can be bound to local data source by assigning the array of JavaScript objects to the `json` property or simply passing them
-to the constructor while instantiating.
+`DataManager` can be bound to local data source by assigning the array of JavaScript objects to the `json` property or simply passing them to the constructor while instantiating.
+
+Create `my-app/es5-datasource.js` file to bind JSON data.
 
 {% tabs %}
 {% highlight js tabtitle="index.js" %}
@@ -121,6 +122,9 @@ to the constructor while instantiating.
 {% endhighlight %}
 {% highlight html tabtitle="index.html" %}
 {% include code-snippet/data/getting-started-cs9/index.html %}
+{% endhighlight %}
+{% highlight html tabtitle="es5-datasource.js" %}
+{% include code-snippet/data/getting-started-cs9/es5-datasource.js %}
 {% endhighlight %}
 {% endtabs %}
         
@@ -152,6 +156,9 @@ The data filtering is a trivial operation which will let us to get reduced view 
 {% highlight html tabtitle="index.html" %}
 {% include code-snippet/data/getting-started-cs11/index.html %}
 {% endhighlight %}
+{% highlight html tabtitle="es5-datasource.js" %}
+{% include code-snippet/data/getting-started-cs11/es5-datasource.js %}
+{% endhighlight %}
 {% endtabs %}
         
 {% previewsample "page.domainurl/code-snippet/data/getting-started-cs11" %}
@@ -167,6 +174,9 @@ The data can be ordered either in ascending or descending using `sortBy` method 
 {% highlight html tabtitle="index.html" %}
 {% include code-snippet/data/getting-started-cs12/index.html %}
 {% endhighlight %}
+{% highlight html tabtitle="es5-datasource.js" %}
+{% include code-snippet/data/getting-started-cs12/es5-datasource.js %}
+{% endhighlight %}
 {% endtabs %}
         
 {% previewsample "page.domainurl/code-snippet/data/getting-started-cs12" %}
@@ -181,6 +191,9 @@ The `page` method of the Query class is used to get range of data based on the p
 {% endhighlight %}
 {% highlight html tabtitle="index.html" %}
 {% include code-snippet/data/getting-started-cs13/index.html %}
+{% endhighlight %}
+{% highlight html tabtitle="es5-datasource.js" %}
+{% include code-snippet/data/getting-started-cs13/es5-datasource.js %}
 {% endhighlight %}
 {% endtabs %}
         
@@ -200,6 +213,9 @@ A DataSource can be created in-line with other Syncfusion component configuratio
 {% endhighlight %}
 {% highlight html tabtitle="index.html" %}
 {% include code-snippet/data/getting-started-cs14/index.html %}
+{% endhighlight %}
+{% highlight html tabtitle="es5-datasource.js" %}
+{% include code-snippet/data/getting-started-cs14/es5-datasource.js %}
 {% endhighlight %}
 {% endtabs %}
         
