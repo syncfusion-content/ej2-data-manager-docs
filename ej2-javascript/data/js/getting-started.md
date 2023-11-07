@@ -116,6 +116,33 @@ The DataManager can act as gateway for both local and remote data source which w
 
 Create `my-app/es5-datasource.js` file to bind JSON data.
 
+Add the CSS below to the `myapp/index.html` file to style the table.
+
+```html
+<style>
+     .e-table {
+          border: solid 1px #e0e0e0;
+          border-collapse: collapse;
+          font-family: Roboto;
+     }
+
+     .e-table td,
+     .e-table th {
+          border-style: solid;
+          border-width: 1px 0 0;
+          border-color: #e0e0e0;
+          display: table-cell;
+          font-size: 14px;
+          line-height: 20px;
+          overflow: hidden;
+          padding: 8px 21px;
+          vertical-align: middle;
+          white-space: nowrap;
+          width: auto;
+     }
+</style>
+``` 
+
 {% tabs %}
 {% highlight js tabtitle="index.js" %}
 {% include code-snippet/data/getting-started-cs9/index.js %}
