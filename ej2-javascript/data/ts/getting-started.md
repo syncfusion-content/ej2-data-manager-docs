@@ -35,7 +35,7 @@ git clone https://github.com/SyncfusionExamples/ej2-quickstart-webpack- ej2-quic
 {% endhighlight %}
 {% endtabs %}
 
-After cloning the application in the `ej2-quickstart` folder, run the following command line to navigate to the `ej2-quickstart` folder.
+After cloning the application in the **ej2-quickstart** folder, run the following command line to navigate to the ej2-quickstart folder.
 
 {% tabs %}
 {% highlight bash tabtitle="CMD" %}
@@ -49,7 +49,7 @@ cd ej2-quickstart
 
 Syncfusion JavaScript (Essential JS 2) packages are available on the [npmjs.com](https://www.npmjs.com/~syncfusionorg) public registry. You can install all Syncfusion JavaScript (Essential JS 2) controls in a single [@syncfusion/ej2](https://www.npmjs.com/package/@syncfusion/ej2) package or individual packages for each control.
 
-The quickstart application is preconfigured with the dependent [@syncfusion/ej2](https://www.npmjs.com/package/@syncfusion/ej2) package in the `~/package.json` file. Use the following command to install the dependent npm packages from the command prompt.
+The quickstart application is preconfigured with the dependent **@syncfusion/ej2** package in the **~/package.json** file. Use the following command to install the dependent npm packages from the command prompt.
 
 {% tabs %}
 {% highlight bash tabtitle="NPM" %}
@@ -59,7 +59,6 @@ npm install
 {% endhighlight %}
 {% endtabs %}
 
-
 ## Connection to a data source
 
 The DataManager can act as gateway for both local and remote data source which will uses the query to interact with the data source.
@@ -68,7 +67,7 @@ The DataManager can act as gateway for both local and remote data source which w
 
 `DataManager` can be bound to local data source by assigning the array of JavaScript objects to the `json` property or simply passing them to the constructor while instantiating.
 
-Add the CSS below to the `index.html` file to style the table and create `app/datasource.ts` file to bind JSON data.
+Add the CSS below to the **index.html** file to style the table and create **app/datasource.ts** file to bind JSON data.
 
 ```html
 <style>
@@ -258,10 +257,10 @@ import { data } from './datasource';
 let grid: Grid = new Grid({
     dataSource: new DataManager(data),
     columns: [
-                { field: 'OrderID', headerText: 'Order ID', textAlign: 'Right', width: 90, type: 'number' },
-                { field: 'CustomerID', width: 120, headerText: 'Customer ID', type: 'string' },
-                { field: 'Freight', headerText: 'Freight', textAlign: 'Right', width: 90, format: 'C' },
-                { field: 'OrderDate', headerText: 'Order Date', width: 120, format: 'yMd' },
+        { field: 'OrderID', headerText: 'Order ID', textAlign: 'Right', width: 90, type: 'number' },
+        { field: 'CustomerID', width: 120, headerText: 'Customer ID', type: 'string' },
+        { field: 'Freight', headerText: 'Freight', textAlign: 'Right', width: 90, format: 'C' },
+        { field: 'OrderDate', headerText: 'Order Date', width: 120, format: 'yMd' }
     ],
     height: 315,
     allowPaging: false
