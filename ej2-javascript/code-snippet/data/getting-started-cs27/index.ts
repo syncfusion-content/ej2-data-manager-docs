@@ -1,5 +1,3 @@
-
-
 import { DataManager, Query } from '@syncfusion/ej2-data';
 import { compile } from '@syncfusion/ej2-base';
 import {data} from './datasource.ts';
@@ -14,6 +12,3 @@ let table: HTMLElement = (<HTMLElement>document.getElementById('datatable'));
 result.forEach((data: Object) => {
     table.appendChild(compiledFunction(data)[0]);
 });
-
-
-
