@@ -1,5 +1,3 @@
-(document.getElementById('datatable')).style.display = 'none';
-
 const SERVICE_URI = 'https://services.syncfusion.com/js/production/api/orders';
 
 var grid = new ej.grids.Grid({

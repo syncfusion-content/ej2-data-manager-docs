@@ -150,7 +150,7 @@ Add the CSS below to the `myapp/index.html` file to style the table.
 {% highlight html tabtitle="index.html" %}
 {% include code-snippet/data/getting-started-cs9/index.html %}
 {% endhighlight %}
-{% highlight html tabtitle="es5-datasource.js" %}
+{% highlight ts tabtitle="es5-datasource.js" %}
 {% include code-snippet/data/getting-started-cs9/es5-datasource.js %}
 {% endhighlight %}
 {% endtabs %}
@@ -183,7 +183,7 @@ The data filtering is a trivial operation which will let us to get reduced view 
 {% highlight html tabtitle="index.html" %}
 {% include code-snippet/data/getting-started-cs11/index.html %}
 {% endhighlight %}
-{% highlight html tabtitle="es5-datasource.js" %}
+{% highlight ts tabtitle="es5-datasource.js" %}
 {% include code-snippet/data/getting-started-cs11/es5-datasource.js %}
 {% endhighlight %}
 {% endtabs %}
@@ -201,7 +201,7 @@ The data can be ordered either in ascending or descending using `sortBy` method 
 {% highlight html tabtitle="index.html" %}
 {% include code-snippet/data/getting-started-cs12/index.html %}
 {% endhighlight %}
-{% highlight html tabtitle="es5-datasource.js" %}
+{% highlight ts tabtitle="es5-datasource.js" %}
 {% include code-snippet/data/getting-started-cs12/es5-datasource.js %}
 {% endhighlight %}
 {% endtabs %}
@@ -219,7 +219,7 @@ The `page` method of the Query class is used to get range of data based on the p
 {% highlight html tabtitle="index.html" %}
 {% include code-snippet/data/getting-started-cs13/index.html %}
 {% endhighlight %}
-{% highlight html tabtitle="es5-datasource.js" %}
+{% highlight ts tabtitle="es5-datasource.js" %}
 {% include code-snippet/data/getting-started-cs13/es5-datasource.js %}
 {% endhighlight %}
 {% endtabs %}
@@ -229,6 +229,8 @@ The `page` method of the Query class is used to get range of data based on the p
 ## Component binding
 
 DataManager component can be used with Syncfusion components which supports data binding.
+
+In the following samples, the grid component is bound. To render the grid with the necessary configurations, please refer to the [Grid Getting Started](https://ej2.syncfusion.com/javascript/documentation/grid/getting-started) documentation.
 
 ### Local data binding
 
@@ -241,7 +243,7 @@ A DataSource can be created in-line with other Syncfusion component configuratio
 {% highlight html tabtitle="index.html" %}
 {% include code-snippet/data/getting-started-cs14/index.html %}
 {% endhighlight %}
-{% highlight html tabtitle="es5-datasource.js" %}
+{% highlight ts tabtitle="es5-datasource.js" %}
 {% include code-snippet/data/getting-started-cs14/es5-datasource.js %}
 {% endhighlight %}
 {% endtabs %}
