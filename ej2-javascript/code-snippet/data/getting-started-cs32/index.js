@@ -1,6 +1,3 @@
-
-(document.getElementById('datatable')).style.display = 'none';
-
 var grid = new ej.grids.Grid({
     dataSource: new ej.data.DataManager(data),
     columns: [
