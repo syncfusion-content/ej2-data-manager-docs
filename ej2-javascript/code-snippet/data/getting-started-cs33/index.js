@@ -1,5 +1,3 @@
-(document.getElementById('datatable')).style.display = 'none';
-
 const SERVICE_URI = 'https://js.syncfusion.com/demos/ejServices/Wcf/Northwind.svc/Orders/?$top=20';
 
 var grid = new ej.grids.Grid({

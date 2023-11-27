@@ -2,7 +2,7 @@
 
 import { Grid } from '@syncfusion/ej2-grids';
 import { DataManager } from '@syncfusion/ej2-data';
-import { data } from './datasource.ts';
+import { data } from './datasource';
 
 (<HTMLTableElement>document.getElementById('datatable')).style.display = 'none';
 

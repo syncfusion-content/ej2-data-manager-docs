@@ -230,6 +230,8 @@ The `page` method of the Query class is used to get range of data based on the p
 
 DataManager component can be used with Syncfusion components which supports data binding.
 
+In the following samples, the grid component is bound. To render the grid with the necessary configurations, please refer to the [Grid Getting Started](https://ej2.syncfusion.com/javascript/documentation/grid/getting-started) documentation.
+
 ### Local data binding
 
 A DataSource can be created in-line with other Syncfusion component configuration settings.

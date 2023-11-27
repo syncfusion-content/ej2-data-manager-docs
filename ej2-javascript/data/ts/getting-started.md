@@ -59,21 +59,51 @@ npm install
 {% endhighlight %}
 {% endtabs %}
 
+
 ## Connection to a data source
 
 The DataManager can act as gateway for both local and remote data source which will uses the query to interact with the data source.
 
 ### Binding to JSON data
 
-`DataManager` can be bound to local data source by assigning the array of JavaScript objects to the `json` property or simply passing them
-to the constructor while instantiating.
+`DataManager` can be bound to local data source by assigning the array of JavaScript objects to the `json` property or simply passing them to the constructor while instantiating.
+
+Add the CSS below to the `style.css` file to style the table and Create `app/datasource.ts` file to bind JSON data.
+
+```html
+<style>
+     .e-table {
+          border: solid 1px #e0e0e0;
+          border-collapse: collapse;
+          font-family: Roboto;
+     }
+
+     .e-table td,
+     .e-table th {
+          border-style: solid;
+          border-width: 1px 0 0;
+          border-color: #e0e0e0;
+          display: table-cell;
+          font-size: 14px;
+          line-height: 20px;
+          overflow: hidden;
+          padding: 8px 21px;
+          vertical-align: middle;
+          white-space: nowrap;
+          width: auto;
+     }
+</style>
+``` 
 
 {% tabs %}
-{% highlight ts tabtitle="index.ts" %}
+{% highlight ts tabtitle="app.ts" %}
 {% include code-snippet/data/getting-started-cs27/index.ts %}
 {% endhighlight %}
 {% highlight html tabtitle="index.html" %}
 {% include code-snippet/data/getting-started-cs27/index.html %}
+{% endhighlight %}
+{% highlight html tabtitle="index.css" %}
+{% include code-snippet/data/getting-started-cs27/index.css %}
 {% endhighlight %}
 {% endtabs %}
           
@@ -143,6 +173,8 @@ The `page` method of the Query class is used to get range of data based on the p
 
 DataManager component can be used with Syncfusion components which supports data binding.
 
+In the following samples, the grid component is bound. To render the grid with the necessary configurations, please refer to the [Grid Getting Started](https://ej2.syncfusion.com/documentation/grid/getting-started) documentation.
+
 ### Local data binding
 
 A DataSource can be created in-line with other Syncfusion component configuration settings.
@@ -153,6 +185,10 @@ A DataSource can be created in-line with other Syncfusion component configuratio
 {% endhighlight %}
 {% highlight html tabtitle="index.html" %}
 {% include code-snippet/data/getting-started-cs32/index.html %}
+{% endhighlight %}
+{% endtabs %}
+{% highlight html tabtitle="datasource.ts" %}
+{% include code-snippet/data/getting-started-cs32/datasource.ts %}
 {% endhighlight %}
 {% endtabs %}
           

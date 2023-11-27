@@ -3,8 +3,6 @@
 import { Grid } from '@syncfusion/ej2-grids';
 import { DataManager } from '@syncfusion/ej2-data';
 
-(<HTMLTableElement>document.getElementById('datatable')).style.display = 'none';
-
 const SERVICE_URI: string = 'https://js.syncfusion.com/demos/ejServices/Wcf/Northwind.svc/Orders/?$top=20';
 
 let grid: Grid = new Grid({
