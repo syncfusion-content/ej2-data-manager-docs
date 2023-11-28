@@ -3,7 +3,7 @@
 import { Grid } from '@syncfusion/ej2-grids';
 import { DataManager } from '@syncfusion/ej2-data';
 
-const SERVICE_URI: string = 'https://js.syncfusion.com/demos/ejServices/Wcf/Northwind.svc/Orders/?$top=20';
+const SERVICE_URI: string = 'https://services.syncfusion.com/js/production/api/Orders';
 
 let grid: Grid = new Grid({
     dataSource: new DataManager({ url: SERVICE_URI }),
