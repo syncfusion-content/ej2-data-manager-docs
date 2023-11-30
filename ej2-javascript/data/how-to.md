@@ -80,11 +80,11 @@ You can use the [`addParams`](../api/data/query/#addparams) method of [`Query`](
 You can add custom headers to the request made by **DataManager** using the `headers` property.
 
 ```ts
-import { DataManager, Query, ReturnOption, ODataAdaptor } from '@syncfusion/ej2-data';
+import { DataManager, Query, ReturnOption, ODataV4Adaptor } from '@syncfusion/ej2-data';
 
-const SERVICE_URI: string =  'https://js.syncfusion.com/demos/ejServices/Wcf/Northwind.svc/Orders';
+const SERVICE_URI: string =  'https://services.odata.org/V4/Northwind/Northwind.svc/Orders/';
 
-new DataManager({ url: SERVICE_URI, adaptor: new ODataAdaptor, headers:[{ 'syncfusion': 'true' }] })
+new DataManager({ url: SERVICE_URI, adaptor: new ODataV4Adaptor, headers:[{ 'syncfusion': 'true' }] })
     .executeQuery(new Query())
     .then((e: ReturnOption) => {
         //get result from e.result
