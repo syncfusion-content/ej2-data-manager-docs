@@ -80,9 +80,9 @@ The sample response object should be as follows,
 }
 ```
 
-## OData adaptor
+## ODataV4 adaptor
 
-[OData](http://www.odata.org/documentation/odata-version-3-0/) is standardized protocol for creating and consuming data. You can retrieve data from OData service using **DataManager**. The `ODataAdaptor` helps you to interact with OData service. You can refer to the following code example of remote Data binding using OData service.
+[OData](http://www.odata.org/documentation/odata-version-3-0/) is standardized protocol for creating and consuming data. You can retrieve data from OData service using **DataManager**. The `ODataV4Adaptor` helps you to interact with OData service. You can refer to the following code example of remote Data binding using OData service.
 
 {% if page.publishingplatform == "typescript" %}
 
@@ -487,7 +487,7 @@ To create and use custom adaptor, please refer to the below steps.
 * Override the desired method to achieve your requirement.
 * Assign the custom adaptor to the `adaptor` property of **DataManager**.
 
-For the sake of demonstrating custom adaptor approach, we are going to see how to add serial number for the records by overriding the built-in response processing using `processResponse` method of the `ODataAdaptor`.
+For the sake of demonstrating custom adaptor approach, we are going to see how to add serial number for the records by overriding the built-in response processing using `processResponse` method of the `ODataV4Adaptor`.
 
 {% if page.publishingplatform == "typescript" %}
 
