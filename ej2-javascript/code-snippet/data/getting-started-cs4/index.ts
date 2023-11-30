@@ -1,24 +1,23 @@
-
-
-import { DataManager, Query, ReturnOption, ODataAdaptor } from '@syncfusion/ej2-data';
+import { DataManager, Query, ReturnOption, ODataV4Adaptor } from '@syncfusion/ej2-data';
 import { compile } from '@syncfusion/ej2-base';
 
-class SerialNoAdaptor extends ODataAdaptor {
+class SerialNoAdaptor extends ODataV4Adaptor {
+    
     public processResponse(): Object {
         let i: number = 0;
         //calling base class processResponse function
         let original: Object[] = super.processResponse.apply(this, arguments);
         //Adding serial number
-        original.forEach((item: Object) => item['Sno'] = ++i);
+        original.forEach((item: Object) => item['SNO'] = ++i);
         return original;
     }
 }
 
-let template: string = '<tr><td>${Sno}</td><td>${CustomerID}</td><td>${EmployeeID}</td></tr>';
+let template: string = '<tr><td>${SNO}</td><td>${CustomerID}</td><td>${EmployeeID}</td></tr>';
 
 let compiledFunction: Function = compile(template);
 
-const SERVICE_URI: string =  'https://js.syncfusion.com/demos/ejServices/Wcf/Northwind.svc/Orders';
+const SERVICE_URI: string =  'https://services.odata.org/V4/Northwind/Northwind.svc/Orders/';
 
 let table: HTMLElement = (<HTMLElement>document.getElementById('datatable'));
 
@@ -30,7 +29,3 @@ new DataManager({ url: SERVICE_URI, adaptor: new SerialNoAdaptor }).executeQuery
             table.appendChild(compiledFunction(data)[0]);
         });
 });
-
-
-
-
