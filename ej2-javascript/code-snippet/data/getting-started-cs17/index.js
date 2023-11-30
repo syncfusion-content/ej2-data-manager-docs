@@ -2,7 +2,7 @@ var template = '<tr><td>${OrderID}</td><td>${CustomerID}</td><td>${EmployeeID}</
 
 var compiledFunction = ej.base.compile(template);
 
-const SERVICE_URI =  'https://services.odata.org/V4/Northwind/Northwind.svc/Orders/';
+const SERVICE_URI = 'https://services.odata.org/V4/Northwind/Northwind.svc/Orders/';
 
 var table = (document.getElementById('datatable'));
 

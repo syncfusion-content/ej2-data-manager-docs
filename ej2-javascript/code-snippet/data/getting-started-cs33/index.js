@@ -1,7 +1,7 @@
-const SERVICE_URI = 'https://js.syncfusion.com/demos/ejServices/Wcf/Northwind.svc/Orders/?$top=20';
+const SERVICE_URI = 'https://services.odata.org/V4/Northwind/Northwind.svc/Orders/';
 
 var grid = new ej.grids.Grid({
-    dataSource: new ej.data.DataManager({ url: SERVICE_URI }),
+    dataSource: new ej.data.DataManager({ url: SERVICE_URI, adaptor: new ej.data.ODataV4Adaptor(), }),
     columns: [
                 { field: 'OrderID', headerText: 'Order ID', textAlign: 'Right', width: 90, type: 'number' },
                 { field: 'CustomerID', width: 120, headerText: 'Customer ID', type: 'string' },
