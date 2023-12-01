@@ -13,7 +13,7 @@ domainurl: ##DomainURL##
 
 ## Work in offline mode
 
-On remote data binding, every time invoking [`executeQuery`](../api/data/dataManager/#executequery) will send request to the server and the query will be processed on server-side. To avoid post back to server on calling [`executeQuery`](../api/data/dataManager/#executequery), you can set the **DataManager** to load all the data on initialization time and make the query processing in client-side. To enable this behavior, you can use `offline` property of **DataManager**.
+On remote data binding, every time invoking [executeQuery](../api/data/dataManager/#executequery) will send request to the server and the query will be processed on server-side. To avoid post back to server on calling [executeQuery](../api/data/dataManager/#executequery), you can set the **DataManager** to load all the data on initialization time and make the query processing in client-side. To enable this behavior, you can use `offline` property of **DataManager**.
 
 {% if page.publishingplatform == "typescript" %}
 
@@ -46,7 +46,7 @@ On remote data binding, every time invoking [`executeQuery`](../api/data/dataMan
 
 ## Sending additional parameters to server
 
-You can use the [`addParams`](../api/data/query/#addparams) method of [`Query`](../api/data/query) class, to add custom parameter to the data request.
+You can use the [addParams](../api/data/query/#addparams) method of [Query](../api/data/query) class, to add custom parameter to the data request.
 
 {% if page.publishingplatform == "typescript" %}
 

@@ -17,7 +17,7 @@ Each data sources uses different way in handling the CRUD operations and hence *
 
 ## Insert
 
-The [`insert`](../api/data/dataManager/#insert) method of **DataManager** is used to add new record to the data source. For remote data source, the new record will be send along with the request to the server.
+The [insert](../api/data/dataManager/#insert) method of **DataManager** is used to add new record to the data source. For remote data source, the new record will be send along with the request to the server.
 
 {% if page.publishingplatform == "typescript" %}
 
@@ -50,7 +50,7 @@ The [`insert`](../api/data/dataManager/#insert) method of **DataManager** is use
 
 ## Update
 
-The [`update`](../api/data/dataManager/#update) method of **DataManager** is used to modify/update a record in the data source. For remote data source, the modified record will be send along with the request to the server.
+The [update](../api/data/dataManager/#update) method of **DataManager** is used to modify/update a record in the data source. For remote data source, the modified record will be send along with the request to the server.
 
 {% if page.publishingplatform == "typescript" %}
 
@@ -79,11 +79,11 @@ The [`update`](../api/data/dataManager/#update) method of **DataManager** is use
 {% previewsample "page.domainurl/code-snippet/data/manipulation-cs2" %}
 {% endif %}
 
-> Primary key name is required by the [`update`](../api/data/dataManager/#update) method to find the record to be updated.
+> Primary key name is required by the [update](../api/data/dataManager/#update) method to find the record to be updated.
 
 ## Remove
 
-The [`remove`](../api/data/dataManager/#remove) method of **DataManager** is used to remove a record from the data source. For remote data source, the record details such as primary key and data will be send along with the request to the server.
+The [remove](../api/data/dataManager/#remove) method of **DataManager** is used to remove a record from the data source. For remote data source, the record details such as primary key and data will be send along with the request to the server.
 
 {% if page.publishingplatform == "typescript" %}
 
@@ -116,7 +116,7 @@ The [`remove`](../api/data/dataManager/#remove) method of **DataManager** is use
 
 ## Batch Edit Operation
 
-**DataManager** supports batch processing for the CRUD operations. You can use the [`saveChanges`](../api/data/dataManager/#savechanges) method to batch the edit operation. For remote data source, requests to add, remove and change are handled altogether at a time rather than passing the request separately for each operation.
+**DataManager** supports batch processing for the CRUD operations. You can use the [saveChanges](../api/data/dataManager/#savechanges) method to batch the edit operation. For remote data source, requests to add, remove and change are handled altogether at a time rather than passing the request separately for each operation.
 
 {% if page.publishingplatform == "typescript" %}
 

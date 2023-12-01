@@ -3,7 +3,7 @@
 import { Grid } from '@syncfusion/ej2-grids';
 import { DataManager, ODataV4Adaptor } from '@syncfusion/ej2-data';
 
-const SERVICE_URI: string = 'https://services.odata.org/V4/Northwind/Northwind.svc/Orders/';
+const SERVICE_URI: string = 'https://services.odata.org/V4/Northwind/Northwind.svc/Orders/?$top=10';
 
 let grid: Grid = new Grid({
     dataSource: new DataManager({ url: SERVICE_URI,  adaptor: new ODataV4Adaptor(), }),

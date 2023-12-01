@@ -49,7 +49,7 @@ Executes query with the given DataManager.
 
 | Parameter | Type | Description |
 |------|------|-------------|
-| dataManager (*optional*) |  [`DataManager`](./api-dataManager.html) | Defines the DataManager. |
+| dataManager (*optional*) |  [DataManager](./api-dataManager.html) | Defines the DataManager. |
 | done (*optional*) |  `Function` | Defines the success callback. |
 | fail (*optional*) |  `Function` | Defines the failure callback. |
 | always (*optional*) |  `Function` | Defines the callback which will be invoked on either success or failure.<br><br><pre><br>let dataManager: DataManager = new DataManager([{ ID: '10' }, { ID: '2' }, { ID: '1' }, { ID: '20' }]);<br>let query: Query = new Query();<br>query.sortBy('ID', (x: string, y: string): number => { return parseInt(x, 10) - parseInt(y, 10) });<br>let promise: Promise< Object > = query.execute(dataManager);<br>promise.then((e: { result: Object }) => { });<br></pre><br> |
@@ -62,7 +62,7 @@ Executes query with the local datasource.
 
 | Parameter | Type | Description |
 |------|------|-------------|
-| dataManager (*optional*) |  [`DataManager`](./api-dataManager.html) | Defines the DataManager.<br> |
+| dataManager (*optional*) |  [DataManager](./api-dataManager.html) | Defines the DataManager.<br> |
 
 Returns *Object[]*
 
@@ -108,7 +108,7 @@ Gets the records in hierarchical relationship from two tables. It requires the f
 
 | Parameter | Type | Description |
 |------|------|-------------|
-| query |  [`Query`](./api-query.html) | Defines the query to relate two tables. |
+| query |  [Query](./api-query.html) | Defines the query to relate two tables. |
 | selectorFn |  `Function` | Defines the custom function to select records.<br> |
 
 Returns [*Query*](./api-query.html)
@@ -209,7 +209,7 @@ Sets default DataManager to execute query.
 
 | Parameter | Type | Description |
 |------|------|-------------|
-| dataManager |  [`DataManager`](./api-dataManager.html) | Defines the DataManager.<br> |
+| dataManager |  [DataManager](./api-dataManager.html) | Defines the DataManager.<br> |
 
 Returns [*Query*](./api-query.html)
 

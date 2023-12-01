@@ -9,7 +9,7 @@ documentation: ug
 domainurl: ##DomainURL##
 ---
 
-* [`API`](data/api.md)
+* [API](data/api.md)
 * [Hide_DataManager](data/api-dataManager.md)
 * [Hide_Deferred](data/api-deferred.md)
 * [Hide_Predicate](data/api-predicate.md)
