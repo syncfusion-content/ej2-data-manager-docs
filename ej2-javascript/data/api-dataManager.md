@@ -21,7 +21,7 @@ Executes the given query with local data source.
 
 | Parameter | Type | Description |
 |------|------|-------------|
-| query (*optional*) |  [`Query`](./api-query.html) | Defines the query to retrieve data.<br> |
+| query (*optional*) |  [Query](./api-query.html) | Defines the query to retrieve data.<br> |
 
 Returns *Object[]*
 
@@ -32,7 +32,7 @@ It will be executed as asynchronously and returns Promise object which will be r
 
 | Parameter | Type | Description |
 |------|------|-------------|
-| query |  [`Query`](./api-query.html) &#124;  `Function` | Defines the query to retrieve data. |
+| query |  [Query](./api-query.html) &#124;  `Function` | Defines the query to retrieve data. |
 | done (*optional*) |  `Function` | Defines the callback function and triggers when the Promise is resolved. |
 | fail (*optional*) |  `Function` | Defines the callback function and triggers when the Promise is rejected. |
 | always (*optional*) |  `Function` | Defines the callback function and triggers when the Promise is resolved or rejected.<br> |
@@ -53,8 +53,8 @@ Removes data from the table with the given key.
 |------|------|-------------|
 | keyField |  `string` | Defines the column field. |
 | value |  `Object` | Defines the value to find the data in the specified column. |
-| tableName (*optional*) |  `string` &#124;  [`Query`](./api-query.html) | Defines the table name |
-| query (*optional*) |  [`Query`](./api-query.html) | Sets default query for the DataManager.<br> |
+| tableName (*optional*) |  `string` &#124;  [Query](./api-query.html) | Defines the table name |
+| query (*optional*) |  [Query](./api-query.html) | Sets default query for the DataManager.<br> |
 
 Returns *Object* &#124;  *Promise*
 
@@ -68,8 +68,8 @@ If the datasource from remote, then updated in a single post.
 |------|------|-------------|
 | changes |  `Object` | Defines the CrudOptions. |
 | key (*optional*) |  `string` | Defines the column field. |
-| tableName (*optional*) |  `string` &#124;  [`Query`](./api-query.html) | Defines the table name. |
-| query (*optional*) |  [`Query`](./api-query.html) | Sets default query for the DataManager.<br> |
+| tableName (*optional*) |  `string` &#124;  [Query](./api-query.html) | Defines the table name. |
+| query (*optional*) |  [Query](./api-query.html) | Sets default query for the DataManager.<br> |
 
 Returns *Promise* &#124;  *Object*
 
@@ -79,7 +79,7 @@ Overrides DataManager's default query with given query.
 
 | Parameter | Type | Description |
 |------|------|-------------|
-| query |  [`Query`](./api-query.html) | Defines the new default query.<br> |
+| query |  [Query](./api-query.html) | Defines the new default query.<br> |
 
 Returns [*DataManager*](./api-dataManager.html)
 
@@ -91,7 +91,7 @@ Updates existing record in the given table.
 |------|------|-------------|
 | keyField |  `string` | Defines the column field. |
 | value |  `Object` | Defines the value to find the data in the specified column. |
-| tableName (*optional*) |  `string` &#124;  [`Query`](./api-query.html) | Defines the table name |
-| query (*optional*) |  [`Query`](./api-query.html) | Sets default query for the DataManager.<br> |
+| tableName (*optional*) |  `string` &#124;  [Query](./api-query.html) | Defines the table name |
+| query (*optional*) |  [Query](./api-query.html) | Sets default query for the DataManager.<br> |
 
 Returns *Object* &#124;  *Promise*

@@ -49,7 +49,7 @@ to the constructor while instantiating. Now the JavaScript object array can be q
 
 **DataManager** can be bound to remote data source by assigning service end point URL to the `url` property. With the provided `url`, the **DataManager** handles all communication with the data server with help of queries.
 
-When querying data, the **DataManager** will convert the query object(**Query**) into server request after calling [`executeQuery`](../api/data/dataManager/#executequery) and waits for the server response(`JSON` format).
+When querying data, the **DataManager** will convert the query object(**Query**) into server request after calling [executeQuery](../api/data/dataManager/#executequery) and waits for the server response(`JSON` format).
 
 {% if page.publishingplatform == "typescript" %}
 

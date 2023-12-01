@@ -80,9 +80,9 @@ The sample response object should be as follows,
 }
 ```
 
-## ODataV4 adaptor
+## OData adaptor
 
-[OData](http://www.odata.org/documentation/odata-version-3-0/) is standardized protocol for creating and consuming data. You can retrieve data from OData service using **DataManager**. The `ODataV4Adaptor` helps you to interact with OData service. You can refer to the following code example of remote Data binding using OData service.
+[OData](http://www.odata.org/documentation/odata-version-3-0/) is standardized protocol for creating and consuming data. You can retrieve data from OData service using **DataManager**. The `ODataAdaptor` helps you to interact with OData service. You can refer to the following code example of remote Data binding using OData service.
 
 {% if page.publishingplatform == "typescript" %}
 
@@ -94,8 +94,6 @@ The sample response object should be as follows,
 {% include code-snippet/data/getting-started-cs2/index.html %}
 {% endhighlight %}
 {% endtabs %}
-        
-{% previewsample "page.domainurl/code-snippet/data/getting-started-cs2" %}
 
 {% elsif page.publishingplatform == "javascript" %}
 
@@ -108,7 +106,6 @@ The sample response object should be as follows,
 {% endhighlight %}
 {% endtabs %}
 
-{% previewsample "page.domainurl/code-snippet/data/getting-started-cs2" %}
 {% endif %}
 
 > By default, `ODataAdaptor` is used by **DataManager**.

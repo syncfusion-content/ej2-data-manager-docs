@@ -60,7 +60,7 @@ Converts plain JavaScript object to Predicate object.
 
 | Parameter | Type | Description |
 |------|------|-------------|
-| json |  `Predicate[]` &#124;  [`Predicate`](./api-predicate.html) | Defines single or collection of Predicate.<br> |
+| json |  `Predicate[]` &#124;  [Predicate](./api-predicate.html) | Defines single or collection of Predicate.<br> |
 
 Returns *Predicate[]*
 
