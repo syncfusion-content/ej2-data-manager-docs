@@ -1,22 +1,16 @@
 
+var template = '<tr><td>${OrderID}</td><td>${CustomerID}</td><td>${EmployeeID}</td></tr>'
 
-import { DataManager, Query, ReturnOption, ODataV4Adaptor } from '@syncfusion/ej2-data';
-import { compile } from '@syncfusion/ej2-base';
+var compiledFunction = ej.base.compile(template);
 
-let template: string = '<tr><td>${OrderID}</td><td>${CustomerID}</td><td>${EmployeeID}</td></tr>';
+const SERVICE_URI =  'https://services.odata.org/V4/Northwind/Northwind.svc/Orders/';
 
-let compiledFunction: Function = compile(template);
+var table = (document.getElementById('datatable'));
 
-const SERVICE_URI: string =  'https://services.odata.org/V4/Northwind/Northwind.svc/Orders/';
-
-let table: HTMLElement = (<HTMLElement>document.getElementById('datatable'));
-
-new DataManager({ url: SERVICE_URI, adaptor: new ODataV4Adaptor }).executeQuery(new Query().take(8)).then((e: ReturnOption) => {
-
-        (<Object[]>e.result).forEach((data: Object) => {
+new ej.data.DataManager({ url: SERVICE_URI, adaptor: new ej.data.ODataV4Adaptor })
+    .executeQuery(new ej.data.Query().take(8))
+    .then((e) => {
+        (e.result).forEach((data) => {
             table.appendChild(compiledFunction(data)[0]);
         });
-});
-
-
-
+    });
