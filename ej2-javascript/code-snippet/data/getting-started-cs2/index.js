@@ -3,7 +3,7 @@ var template = '<tr><td>${OrderID}</td><td>${CustomerID}</td><td>${EmployeeID}</
 
 var compiledFunction = ej.base.compile(template);
 
-const SERVICE_URI =  'https://services.syncfusion.com/js/production/api/Orders';
+const SERVICE_URI =  'https://services.odata.org/V3/Northwind/Northwind.svc/Orders/';
 
 var table = (document.getElementById('datatable'));
 
